@@ -1,0 +1,38 @@
+version: "3.8"
+services: 
+  server: 
+    build: ./server/
+    container_name: server
+    ports:
+      - "9000:9000"
+    command: npm start
+    environment:
+      MONGO_URI: mongodb://root:root@db:27017/todos
+      PORT : 9000
+    volumes: 
+      - "./server/:/app"
+      - "/server/node_modules"
+  
+  client: 
+    build: ./client/
+    container_name: client
+    ports:
+      - "5173:5173"
+    command: npm strat
+    environment:
+      REACT_APP_API_URL: http://server:9000
+    volumes: 
+      - "./client/:/app"
+      - "/app/node_modules"
+  
+  db: 
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/data/db
+
+volumes: 
+  db-data: {}
