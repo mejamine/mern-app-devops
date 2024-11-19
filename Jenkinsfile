@@ -7,9 +7,7 @@ pipeline {
     stages {
         stage("checkout"){
             steps {
-                git branch 'main'
-                url : 'https://github.com/mejamine/mern-app-devops.git'
-
+                checkout scm
             }
         }
         stage("build client image"){
