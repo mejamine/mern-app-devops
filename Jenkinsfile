@@ -17,7 +17,7 @@ pipeline {
                 }
             }
         }
-        stage("build client image"){
+        stage("build server image"){
             steps {
                 dir("server"){
                     sh 'echo root | sudo -S docker build'
