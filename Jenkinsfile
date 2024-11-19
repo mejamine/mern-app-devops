@@ -20,7 +20,7 @@ pipeline {
         stage("build server image"){
             steps {
                 dir("server"){
-                    sh 'echo root | sudo -S docker build mejbri1998/server:1.0 .'
+                    sh 'echo root | sudo -S docker build -t mejbri1998/server:1.0 .'
                 }
             }
         }
