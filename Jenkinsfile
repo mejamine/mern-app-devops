@@ -13,14 +13,14 @@ pipeline {
         stage("build client image"){
             steps {
                 dir("client"){
-                    sh 'echo root | sudo -S docker build'
+                    sh 'echo root | sudo -S docker build .'
                 }
             }
         }
         stage("build server image"){
             steps {
                 dir("server"){
-                    sh 'echo root | sudo -S docker build'
+                    sh 'echo root | sudo -S docker build .'
                 }
             }
         }
