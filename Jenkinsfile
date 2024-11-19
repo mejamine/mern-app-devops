@@ -13,15 +13,23 @@ pipeline {
         stage("build client image"){
             steps {
                 dir("client"){
-                    sh 'echo root | sudo -S docker build .'
+                    sh 'echo root | sudo -S docker build -t mejbri1998/client:1.0 .'
                 }
             }
         }
         stage("build server image"){
             steps {
                 dir("server"){
-                    sh 'echo root | sudo -S docker build .'
+                    sh 'echo root | sudo -S docker build mejbri1998/server:1.0 .'
                 }
+            }
+        }
+        stage("push images to dockerhub"){
+            steps{
+                sh 'echo root | sudo -S docker push mejbri1998/server:1.0'
+                echo 'done push server'
+                sh 'echo root | sudo -S docker push mejbri1998/client:1.0'
+                echo 'done push client'
             }
         }
     }
