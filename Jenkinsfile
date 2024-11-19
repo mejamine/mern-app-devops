@@ -3,17 +3,17 @@ pipline {
     stages {
         stage("Build"){
             steps {
-                echo "building"
+                sh'echo "building"'
             }
         }
         stage("Test"){
             steps {
-                echo "testing"
+                sh'echo "testing"'
             }
         }
         stage("Deploy"){
             steps {
-                echo "deploying"
+                sh'echo "deploying"'
             }
         }
     }
